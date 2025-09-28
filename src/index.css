@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: 'Outfit', sans-serif;
+	background-color: #fcfbfc;
+	overflow-x: hidden;
+}
+
+/* App.css */
+
+/* Base add button (transparent with gradient border + text) */
+.add-btn {
+	@apply relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md
+           border transition-all duration-300
+           bg-transparent border-transparent
+           bg-clip-text text-transparent
+           bg-gradient-to-r from-purple-500 to-pink-500
+           hover:from-pink-500 hover:to-yellow-500;
+}
+
+/* Gradient border trick */
+.add-btn::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: linear-gradient(to right, #a855f7, #ec4899);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
+}
+
+/* Filled variant with gradient background */
+.add-btn-fill {
+	@apply relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md text-white transition-all duration-300;
+	background: linear-gradient(to right, #a855f7, #ec4899);
+	border: none;
+}
+
+.add-btn-fill:hover {
+	background: linear-gradient(to right, #ec4899, #f59e0b); /* pink → amber */
+}
+
+@layer components {
+	.card {
+		@apply bg-white/5 backdrop-blur-sm rounded-xl border border-gray-200 p-4 shadow-sm;
+	}
+
+	.card-btn {
+		@apply relative flex items-center px-3 py-1.5 text-sm font-medium rounded-md
+		border transition-all duration-300
+		bg-transparent border-transparent
+		bg-clip-text text-transparent
+		bg-gradient-to-r from-purple-500 to-pink-500
+		hover:from-pink-500 hover:to-yellow-500;
+	}
+
+	/* Gradient border trick */
+	.card-btn::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		padding: 1px;
+		background: linear-gradient(to right, #a855f7, #ec4899);
+		-webkit-mask: linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		pointer-events: none;
+	}
+}
