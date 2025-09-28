@@ -1,4 +1,4 @@
-const CLOUDINARY_CLOUD_NAME = "detm13vni"
+const CLOUDINARY_CLOUD_NAME = "dummy"
 export const BASE_URL = "http://localhost:8080/api/v1.0";
 
 export const API_ENDPOINTS = {
